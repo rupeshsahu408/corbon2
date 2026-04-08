@@ -19,6 +19,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [roles, setRoles] = useState([])
+  const [rolesLoaded, setRolesLoaded] = useState(false)
 
   useEffect(() => {
     if (!firebaseConfigured || !auth) {
@@ -63,20 +64,24 @@ export function AuthProvider({ children }) {
     async function loadRoles() {
       if (!user) {
         setRoles([])
+        setRolesLoaded(true)
         return
       }
+      setRolesLoaded(false)
       try {
         const me = await api.getPlatformMe()
         if (!ignore) setRoles(me.roles || [])
       } catch {
         if (!ignore) setRoles([])
+      } finally {
+        if (!ignore) setRolesLoaded(true)
       }
     }
     loadRoles()
     return () => { ignore = true }
   }, [user])
 
-  const value = { user, loading, roles, signup, login, loginWithGoogle, logout, getToken, firebaseConfigured, firebaseConfigError }
+  const value = { user, loading, roles, rolesLoaded, signup, login, loginWithGoogle, logout, getToken, firebaseConfigured, firebaseConfigError }
 
   return (
     <AuthContext.Provider value={value}>

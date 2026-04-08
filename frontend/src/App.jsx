@@ -52,7 +52,14 @@ function CompanyGate({ children }) {
 }
 
 function RoleGate({ allow, fallback, children }) {
-  const { roles } = useAuth()
+  const { roles, rolesLoaded } = useAuth()
+  if (!rolesLoaded) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    )
+  }
   const hasAllowedRole = roles.some((r) => allow.includes(r.role))
   if (!hasAllowedRole) return <Navigate to={fallback} replace />
   return children

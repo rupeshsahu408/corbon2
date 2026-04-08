@@ -1,0 +1,39 @@
+{
+  "framework": "esrs",
+  "version": "E1-climate-skeleton",
+  "description": "Skeleton mapping toward ESRS E1 Climate-related disclosures. CarbonFlow provides GHG inventory totals; narrative and policies are out of scope for this export.",
+  "mapping": [
+    {
+      "id": "e1_gross_scope1",
+      "esrsParagraph": "E1 AR-*. GHG emissions — Scope 1",
+      "label": "Gross Scope 1 emissions",
+      "carbonflowStat": "scope1TotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes"
+    },
+    {
+      "id": "e1_gross_scope2",
+      "esrsParagraph": "E1 AR-*. GHG emissions — Scope 2",
+      "label": "Gross Scope 2 emissions (location-based proxy)",
+      "carbonflowStat": "scope2TotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes"
+    },
+    {
+      "id": "e1_gross_scope3",
+      "esrsParagraph": "E1 AR-*. GHG emissions — Scope 3",
+      "label": "Gross Scope 3 emissions",
+      "carbonflowStat": "scope3TotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes"
+    },
+    {
+      "id": "e1_total_ghg",
+      "esrsParagraph": "E1 — Total GHG emissions",
+      "label": "Total GHG emissions (Scope 1+2+3)",
+      "carbonflowStat": "grandTotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes"
+    }
+  ]
+}

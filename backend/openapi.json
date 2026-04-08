@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CarbonFlow API",
+    "version": "v1",
+    "description": "Enterprise, authenticated company, and public integration surface for CarbonFlow.\n\n**Integration pattern:** bulk and connector workloads should enqueue jobs via BullMQ (`INTEGRATION_QUEUE_NAMES` in `services/queue.js`) when `REDIS_URL` is configured; workers consume those queues and write normalised rows through existing controllers.\n\n**Methodology:** emission factors and scope definitions are documented at `GET /methodology` (no auth)."
+  },
+  "servers": [{ "url": "/api" }],
+  "paths": {
+    "/methodology": {
+      "get": {
+        "summary": "Public methodology / calculation version",
+        "description": "GHG scope definitions, emission factor summary, and engine version used for dashboards and reports.",
+        "tags": ["Trust"],
+        "responses": {
+          "200": {
+            "description": "Methodology payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "calculationEngineVersion": { "type": "string" },
+                    "protocol": { "type": "string" },
+                    "scopes": { "type": "object" },
+                    "emissionFactors": { "type": "object" },
+                    "sourceAttribution": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suppliers/analytics": {
+      "get": {
+        "summary": "Company analytics (dashboard)",
+        "description": "Includes monthlyTrend, sourceBreakdown (activity units), and sourceBreakdownCo2 (kg CO2e by fuel/electricity/transport buckets). Requires Firebase bearer token.",
+        "tags": ["Analytics"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Analytics bundle" } }
+      }
+    },
+    "/reports/inventory-snapshot": {
+      "post": {
+        "summary": "Create reproducible inventory snapshot",
+        "description": "Persists scope totals and sourceBreakdownCo2 for a labelled period (audit / period-close).",
+        "tags": ["Reports"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["periodLabel"],
+                "properties": {
+                  "periodLabel": { "type": "string", "example": "2026-Q1" },
+                  "notes": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Snapshot created" } }
+      }
+    },
+    "/reports/inventory-snapshots": {
+      "get": {
+        "summary": "List inventory snapshots",
+        "tags": ["Reports"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Snapshot rows" } }
+      }
+    },
+    "/trust/overview": {
+      "get": {
+        "summary": "Trust overview — wedges, factor library, lineage, assurance checklist",
+        "tags": ["Trust"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": { "200": { "description": "Trust bundle" } }
+      }
+    },
+    "/disclosure/export": {
+      "get": {
+        "summary": "Structured disclosure export (CDP or ESRS skeleton)",
+        "description": "Query param `framework=cdp|esrs`. Maps inventory totals to external questionnaire concepts.",
+        "tags": ["Disclosure"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "framework",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["cdp", "esrs"], "default": "cdp" }
+          }
+        ],
+        "responses": { "200": { "description": "JSON disclosure pack" } }
+      }
+    },
+    "/public/v1/health": {
+      "get": { "summary": "Public API health", "tags": ["Public"], "responses": { "200": { "description": "OK" } } }
+    },
+    "/public/v1/emissions/summary": {
+      "get": {
+        "summary": "Public emissions summary",
+        "tags": ["Public"],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/enterprise/api-keys": {
+      "get": { "summary": "List API keys", "tags": ["Enterprise"], "responses": { "200": { "description": "OK" } } },
+      "post": { "summary": "Create API key", "tags": ["Enterprise"], "responses": { "201": { "description": "Created" } } }
+    },
+    "/enterprise/integrations": {
+      "get": { "summary": "List integrations", "tags": ["Enterprise"], "responses": { "200": { "description": "OK" } } },
+      "post": {
+        "summary": "Create integration (connector entry point)",
+        "description": "Registers a provider connection; sync jobs should be driven via queue workers when Redis is available.",
+        "tags": ["Enterprise"],
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/enterprise/compliance/frameworks": {
+      "get": { "summary": "List compliance frameworks", "tags": ["Enterprise"], "responses": { "200": { "description": "OK" } } }
+    }
+  },
+  "tags": [
+    { "name": "Trust", "description": "Transparency and methodology" },
+    { "name": "Analytics", "description": "Authenticated dashboard data" },
+    { "name": "Reports", "description": "Reports and inventory snapshots" },
+    { "name": "Public", "description": "API key or open public routes" },
+    { "name": "Enterprise", "description": "Enterprise hub — keys, integrations, compliance" },
+    { "name": "Disclosure", "description": "CDP / ESRS structured exports" }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Firebase ID token"
+      }
+    }
+  }
+}

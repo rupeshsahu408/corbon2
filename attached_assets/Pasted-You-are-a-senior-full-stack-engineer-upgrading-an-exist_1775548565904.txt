@@ -1,0 +1,194 @@
+You are a senior full-stack engineer upgrading an existing SaaS platform.
+
+Project: CarbonFlow (Phase 2 - Version 2)
+
+## 🎯 OBJECTIVE
+
+Enhance the existing Phase 1 system to improve usability, reliability, and real-world adoption.
+
+The goal is NOT to add complex ESG or AI features.
+
+The goal is to make the system:
+
+* Easier to use
+* More reliable
+* More engaging for both companies and suppliers
+
+---
+
+## 🧠 CORE IMPROVEMENT AREAS
+
+1. User Experience (UX)
+2. Data Reliability
+3. Supplier Engagement
+4. Basic Automation
+
+---
+
+## 🛠️ TECH STACK (SAME AS PHASE 1)
+
+Frontend:
+
+* React + Tailwind CSS
+
+Backend:
+
+* Node.js + Express.js
+
+Auth:
+
+* Firebase Authentication
+
+Database:
+
+* PostgreSQL (Neon)
+
+---
+
+## 🔥 FEATURES TO BUILD (PHASE 2)
+
+---
+
+### 1. 📩 EMAIL NOTIFICATION SYSTEM
+
+Implement email sending using SMTP or backend service.
+
+Trigger emails when:
+
+* Supplier is added (Invite email with submission link)
+* Reminder after 2 days if not submitted
+* Final reminder after 5 days
+
+Email content should include:
+
+* Simple message
+* Clickable form link
+
+---
+
+### 2. 🔔 SUPPLIER STATUS TRACKING (IMPROVED)
+
+Add statuses:
+
+* Pending
+* Completed
+* Overdue
+
+Dashboard should clearly show:
+
+* Number of pending suppliers
+* Number of completed submissions
+* Highlight overdue suppliers
+
+---
+
+### 3. 📊 DASHBOARD UPGRADE
+
+Enhance company dashboard with:
+
+* Graphs (monthly emissions trend)
+* Supplier contribution breakdown (top emitters)
+* Progress bar (% data collected)
+
+Use simple chart libraries.
+
+---
+
+### 4. 📥 BULK SUPPLIER UPLOAD (CSV)
+
+Allow companies to upload suppliers via CSV file.
+
+Fields:
+
+* name
+* email/phone
+
+System should:
+
+* validate CSV
+* auto-create suppliers
+* send invite emails
+
+---
+
+### 5. ✅ DATA VALIDATION (CRITICAL)
+
+Add validation to supplier form:
+
+* No negative values
+* Required fields must be filled
+* Input limits (realistic ranges)
+
+Prevent incorrect or garbage data.
+
+---
+
+### 6. 🔄 AUTO-REFRESH / LIVE UPDATE
+
+Dashboard should reflect updates when:
+
+* supplier submits data
+
+Use polling or simple refresh system.
+
+---
+
+### 7. 🧠 BASIC ANALYTICS
+
+Add simple insights:
+
+* “Top 3 highest emission suppliers”
+* “Average emissions per supplier”
+
+No AI yet — just calculated metrics.
+
+---
+
+### 8. 🛠️ ERROR HANDLING & UX POLISH
+
+* Friendly error messages
+* Loading indicators
+* Success confirmations
+* Retry options
+
+---
+
+## 🎨 UI IMPROVEMENTS
+
+* Cleaner layout
+* Better spacing
+* Clear CTA buttons
+* Mobile optimization for supplier form
+
+---
+
+## 🚨 IMPORTANT RULES
+
+* Do NOT add AI features yet
+* Do NOT add full ESG compliance yet
+* Focus on usability and reliability
+
+---
+
+## 🎯 SUCCESS CRITERIA
+
+Phase 2 is successful if:
+
+* Suppliers reliably submit data
+* Companies can track status easily
+* Dashboard gives clear insights
+* System feels smooth and usable daily
+
+---
+
+## 🚀 FUTURE PREPARATION
+
+Ensure code is ready for:
+
+* Compliance modules (Phase 3)
+* AI features (Phase 4)
+* Supplier accounts (Phase 5)
+
+---
+
+Build this as a polished, user-friendly Version 2.

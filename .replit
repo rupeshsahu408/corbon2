@@ -1,0 +1,65 @@
+modules = ["nodejs-20"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+FIREBASE_APP_ID = "1:28436964414:web:102f105cd3036e48e41d6f"
+FIREBASE_AUTH_DOMAIN = "corbon-8ef86.firebaseapp.com"
+FIREBASE_PROJECT_ID = "corbon-8ef86"
+FIREBASE_STORAGE_BUCKET = "corbon-8ef86.firebasestorage.app"
+FIREBASE_MESSAGING_SENDER_ID = "28436964414"
+FIREBASE_MEASUREMENT_ID = "G-91Z082KHQN"
+PORT = "3001"
+VITE_API_URL = "/api"
+VITE_FIREBASE_AUTH_DOMAIN = "corbon-8ef86.firebaseapp.com"
+VITE_FIREBASE_PROJECT_ID = "corbon-8ef86"
+VITE_FIREBASE_STORAGE_BUCKET = "corbon-8ef86.firebasestorage.app"
+VITE_FIREBASE_MESSAGING_SENDER_ID = "28436964414"
+VITE_FIREBASE_APP_ID = "1:28436964414:web:102f105cd3036e48e41d6f"
+VITE_FIREBASE_MEASUREMENT_ID = "G-91Z082KHQN"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd backend && node server.js & cd frontend && npm run dev"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 3001
+externalPort = 80
+
+[[ports]]
+localPort = 5000
+externalPort = 5000
+
+[[ports]]
+localPort = 5001
+externalPort = 3000
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["bash", "-c", "cd backend && PORT=5000 NODE_ENV=production node server.js"]
+build = ["bash", "-c", "cd frontend && npm install && npm run build"]

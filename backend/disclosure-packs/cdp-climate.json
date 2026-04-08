@@ -1,0 +1,42 @@
+{
+  "framework": "cdp-climate",
+  "version": "2024-skeleton",
+  "description": "Skeleton mapping from CarbonFlow aggregates to CDP Climate questionnaire concepts. Replace with your CDP account year and official datapoint IDs.",
+  "mapping": [
+    {
+      "id": "scope1_gross_kgco2e",
+      "cdpSection": "C6 Emissions data",
+      "label": "Gross Scope 1 (GHG Protocol)",
+      "carbonflowStat": "scope1TotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes",
+      "notes": "Report in tonnes in CDP where required"
+    },
+    {
+      "id": "scope2_location_kgco2e",
+      "cdpSection": "C6 Emissions data",
+      "label": "Gross Scope 2 (location-based) — grid average in CarbonFlow",
+      "carbonflowStat": "scope2TotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes",
+      "notes": "CarbonFlow uses a single grid factor; add market-based Scope 2 when you support certificates"
+    },
+    {
+      "id": "scope3_gross_kgco2e",
+      "cdpSection": "C6 Emissions data",
+      "label": "Gross Scope 3",
+      "carbonflowStat": "scope3TotalKg",
+      "unit": "kgCO2e",
+      "optionalTransform": "tonnes",
+      "notes": "Align category breakdown with CDP tables in future iterations"
+    },
+    {
+      "id": "reporting_boundary",
+      "cdpSection": "C1 Introduction",
+      "label": "Organizational boundary",
+      "carbonflowStat": "companyName",
+      "unit": "text",
+      "notes": "Consolidation approach must be documented separately"
+    }
+  ]
+}

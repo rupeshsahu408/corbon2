@@ -1,0 +1,55 @@
+const router = require('express').Router()
+const { requireAuth } = require('../middleware/auth')
+const { requireRole } = require('../middleware/rbac')
+const { requirePermission } = require('../middleware/permissions')
+const { enterpriseAudit } = require('../middleware/enterpriseAudit')
+const c = require('../controllers/enterprise')
+
+router.get('/integrations', requireAuth, requireRole('company'), requirePermission('enterprise.integrations.read'), enterpriseAudit('enterprise.integrations.read'), c.getIntegrationConnections)
+router.get('/integrations/health', requireAuth, requireRole('company'), requirePermission('enterprise.integrations.read'), enterpriseAudit('enterprise.integrations.health'), c.getIntegrationHealth)
+router.get('/integrations/providers', requireAuth, requireRole('company'), requirePermission('enterprise.integrations.read'), enterpriseAudit('enterprise.integrations.providers'), c.getIntegrationProviders)
+router.post('/integrations', requireAuth, requireRole('company'), requirePermission('enterprise.integrations.write'), enterpriseAudit('enterprise.integrations.write'), c.createIntegrationConnection)
+router.post('/integrations/:id/sync', requireAuth, requireRole('company'), requirePermission('enterprise.integrations.sync'), enterpriseAudit('enterprise.integrations.sync'), c.triggerIntegrationSync)
+router.post('/integrations/:id/recover', requireAuth, requireRole('company'), requirePermission('enterprise.integrations.write'), enterpriseAudit('enterprise.integrations.recover'), c.recoverIntegrationCircuit)
+
+router.get('/compliance/frameworks', requireAuth, requireRole('company'), requirePermission('enterprise.compliance.read'), enterpriseAudit('enterprise.compliance.frameworks'), c.getComplianceFrameworks)
+router.post('/compliance/region', requireAuth, requireRole('company'), requirePermission('enterprise.compliance.write'), enterpriseAudit('enterprise.compliance.region'), c.setCompanyRegion)
+router.get('/compliance/report/:region', requireAuth, requireRole('company'), requirePermission('enterprise.compliance.read'), enterpriseAudit('enterprise.compliance.report'), c.getRegionalReport)
+
+router.get('/marketplace/listings', requireAuth, requireRole('company'), requirePermission('enterprise.marketplace.read'), enterpriseAudit('enterprise.marketplace.listings'), c.listCreditListings)
+router.post('/marketplace/listings', requireAuth, requireRole('company'), requirePermission('enterprise.marketplace.write'), enterpriseAudit('enterprise.marketplace.create'), c.createCreditListing)
+router.post('/marketplace/listings/:listingId/buy', requireAuth, requireRole('company'), requirePermission('enterprise.marketplace.buy'), enterpriseAudit('enterprise.marketplace.buy'), c.buyCredits)
+
+router.get('/api-keys', requireAuth, requireRole('company'), requirePermission('enterprise.api.read'), enterpriseAudit('enterprise.api.keys.read'), c.listApiKeys)
+router.post('/api-keys', requireAuth, requireRole('company'), requirePermission('enterprise.api.write'), enterpriseAudit('enterprise.api.keys.create'), c.createApiKey)
+router.post('/api-keys/:id/revoke', requireAuth, requireRole('company'), requirePermission('enterprise.api.revoke'), enterpriseAudit('enterprise.api.keys.revoke'), c.revokeApiKey)
+router.get('/api-docs', c.getPublicApiDocs)
+
+router.get('/analytics', requireAuth, requireRole('company'), requirePermission('enterprise.analytics.read'), enterpriseAudit('enterprise.analytics.read'), c.getEnterpriseAnalytics)
+router.get('/security/audit-logs', requireAuth, requireRole('company'), requirePermission('enterprise.security.read'), enterpriseAudit('enterprise.security.audit_logs'), c.getAuditLogs)
+router.get('/security/overview', requireAuth, requireRole('company'), requirePermission('enterprise.security.read'), enterpriseAudit('enterprise.security.overview'), c.getSecurityOverview)
+router.get('/security/permissions/catalog', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.read'), enterpriseAudit('enterprise.security.permissions.catalog'), c.getPermissionCatalog)
+router.get('/security/permissions/templates', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.read'), enterpriseAudit('enterprise.security.permissions.templates'), c.getPermissionTemplates)
+router.get('/security/permissions/templates/export', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.read'), enterpriseAudit('enterprise.security.permissions.templates.export'), c.exportPermissionTemplates)
+router.post('/security/permissions/templates/import', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.templates.import'), c.importPermissionTemplates)
+router.post('/security/permissions/templates', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.templates.create'), c.createPermissionTemplate)
+router.patch('/security/permissions/templates/:templateId', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.templates.update'), c.updatePermissionTemplate)
+router.delete('/security/permissions/templates/:templateId', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.templates.delete'), c.deletePermissionTemplate)
+router.get('/security/permissions/users', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.read'), enterpriseAudit('enterprise.security.permissions.users'), c.getCompanyPermissionUsers)
+router.post('/security/permissions/users/:userId', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.update'), c.upsertUserPermission)
+router.post('/security/permissions/users/:userId/template-diff', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.read'), enterpriseAudit('enterprise.security.permissions.template_diff'), c.getTemplateDiffForUser)
+router.post('/security/permissions/users/:userId/apply-template', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.apply_template'), c.applyPermissionTemplate)
+router.post('/security/permissions/users/bulk-apply-template', requireAuth, requireRole('company'), requirePermission('enterprise.security.permissions.write'), enterpriseAudit('enterprise.security.permissions.bulk_apply_template'), c.bulkApplyPermissionTemplate)
+
+router.get('/billing/plans', requireAuth, requireRole('company'), requirePermission('enterprise.billing.read'), enterpriseAudit('enterprise.billing.plans'), c.getPlans)
+router.post('/billing/subscribe', requireAuth, requireRole('company'), requirePermission('enterprise.billing.write'), enterpriseAudit('enterprise.billing.subscribe'), c.subscribePlan)
+router.get('/billing/invoices', requireAuth, requireRole('company'), requirePermission('enterprise.billing.read'), enterpriseAudit('enterprise.billing.invoices'), c.getBillingInvoices)
+
+router.post('/ai/summary', requireAuth, requireRole('company'), requirePermission('enterprise.ai.write'), enterpriseAudit('enterprise.ai.summary'), c.aiSummary)
+router.post('/ai/query', requireAuth, requireRole('company'), requirePermission('enterprise.ai.write'), enterpriseAudit('enterprise.ai.query'), c.aiQuery)
+router.get('/ai/anomalies', requireAuth, requireRole('company'), requirePermission('enterprise.ai.read'), enterpriseAudit('enterprise.ai.anomalies'), c.getAiAnomalies)
+
+router.get('/global/settings', requireAuth, requireRole('company'), requirePermission('enterprise.global.read'), enterpriseAudit('enterprise.global.settings.read'), c.getGlobalSettings)
+router.post('/global/settings', requireAuth, requireRole('company'), requirePermission('enterprise.global.write'), enterpriseAudit('enterprise.global.settings.write'), c.upsertGlobalSettings)
+
+module.exports = router

@@ -1,0 +1,214 @@
+You are a senior full-stack engineer building a production-ready SaaS application.
+
+Project Name: CarbonFlow (Working Name)
+
+## 🎯 PRODUCT PURPOSE
+
+Build a Phase 1 (Version 1) system for a Carbon Accounting / Supply Chain Data Platform.
+
+The goal is NOT to build a full ESG platform yet.
+
+The goal is to solve ONE core problem:
+
+👉 Enable companies to collect carbon-related data from their suppliers (Scope 3) and generate a basic emissions report.
+
+This system must be clean, scalable, and structured for future expansion.
+
+---
+
+## 🧠 CORE CONCEPT
+
+There are two types of users:
+
+1. Company (Main User)
+2. Supplier (External, no login required)
+
+Flow:
+
+* Company signs up
+* Company adds suppliers
+* Suppliers receive a link
+* Suppliers submit data via a simple form
+* System calculates emissions
+* Company sees results in dashboard
+* Company downloads a report
+
+---
+
+## 🛠️ TECH STACK (MANDATORY)
+
+Frontend:
+
+* React (functional components)
+* Tailwind CSS
+
+Backend:
+
+* Node.js with Express.js
+
+Authentication:
+
+* Firebase Authentication (Email/Password login)
+
+Database:
+
+* PostgreSQL using Neon (serverless)
+
+Other:
+
+* REST API architecture
+* Clean folder structure (controllers, services, routes, models)
+* jsPDF for report generation
+
+---
+
+## 🧱 SYSTEM ARCHITECTURE
+
+Follow modular architecture:
+
+/controllers → handle requests
+/services → business logic (emissions calculation)
+/routes → API routes
+/models → database queries
+/utils → helpers
+
+---
+
+## 🗄️ DATABASE DESIGN
+
+Tables:
+
+1. companies
+
+* id (UUID)
+* name
+* email
+* created_at
+
+2. users
+
+* id
+* company_id
+* email
+* role
+
+3. suppliers
+
+* id
+* company_id
+* name
+* email_or_phone
+* status (pending/completed)
+
+4. emissions
+
+* id
+* supplier_id
+* electricity_usage
+* fuel_usage
+* transport_distance
+* total_co2
+* created_at
+
+---
+
+## ⚙️ FEATURES TO BUILD (PHASE 1 ONLY)
+
+### 1. Authentication
+
+* Company signup/login using Firebase Auth
+* Store user + company in DB
+
+---
+
+### 2. Company Dashboard
+
+* Show:
+
+  * total suppliers
+  * completed vs pending
+  * total emissions (sum)
+
+---
+
+### 3. Supplier Management
+
+* Add supplier (name + contact)
+* Generate unique submission link
+
+---
+
+### 4. Supplier Form (NO LOGIN)
+
+* Fields:
+
+  * electricity usage
+  * fuel usage
+  * transport distance
+
+* Submit → save in DB
+
+* Mark supplier as completed
+
+---
+
+### 5. Emission Calculation Engine
+
+* Basic formulas (modular code)
+* Store total CO2
+
+---
+
+### 6. Report Generation
+
+* Generate PDF using jsPDF
+* Include:
+
+  * company name
+  * total emissions
+  * supplier breakdown
+
+---
+
+## 🎨 UI REQUIREMENTS
+
+* Clean, minimal UI
+* Fast loading
+* No unnecessary complexity
+* Mobile-friendly supplier form
+
+---
+
+## 🚨 IMPORTANT RULES
+
+* DO NOT over-engineer
+* DO NOT add AI features
+* DO NOT add advanced ESG compliance yet
+* Focus only on core workflow
+
+---
+
+## 🎯 SUCCESS CRITERIA
+
+The system is successful if:
+
+* A company can sign up
+* Add suppliers
+* Suppliers submit data
+* Dashboard updates correctly
+* A PDF report can be generated
+
+---
+
+## 🚀 FUTURE-READY
+
+Code should be modular so that in future we can add:
+
+* BRSR / CBAM compliance
+* AI insights
+* Supplier accounts
+* Integrations
+
+---
+
+Build this as a clean, scalable Version 1 system.

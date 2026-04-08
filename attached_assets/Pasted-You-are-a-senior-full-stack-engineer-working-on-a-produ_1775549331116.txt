@@ -1,0 +1,187 @@
+You are a senior full-stack engineer working on a production SaaS platform.
+
+Project: CarbonFlow (Phase 3 - Version 3)
+
+## 🎯 OBJECTIVE
+
+Transform the existing system into a compliance-ready platform.
+
+The goal is to move from:
+“Data collection tool” → “Regulatory + business critical system”
+
+Focus on:
+
+* Compliance
+* Data credibility
+* Structured reporting
+
+---
+
+## 🧠 CORE SHIFT
+
+This phase introduces:
+
+1. Structured emissions accounting (Scope 1, 2, 3)
+2. Compliance-ready reporting formats
+3. Audit readiness
+
+---
+
+## 🔥 FEATURES TO BUILD (PHASE 3)
+
+---
+
+### 1. 🌍 EMISSIONS CLASSIFICATION (CRITICAL)
+
+Implement classification:
+
+* Scope 1 → Direct emissions (fuel, on-site)
+* Scope 2 → Electricity usage
+* Scope 3 → Supplier emissions
+
+System must:
+
+* Store data separately
+* Show breakdown in dashboard
+
+---
+
+### 2. 📊 COMPLIANCE DASHBOARD
+
+Upgrade dashboard to show:
+
+* Scope-wise emissions (1, 2, 3)
+* Total emissions
+* Yearly comparison (if data exists)
+* Sector benchmarks (basic static comparison)
+
+---
+
+### 3. 📄 STRUCTURED REPORTING SYSTEM
+
+Add exportable reports aligned with:
+
+* BRSR
+* CBAM
+
+Reports should include:
+
+* Company info
+* Scope 1, 2, 3 data
+* Supplier contributions
+* Methodology notes
+
+---
+
+### 4. 🧾 AUDIT-READY DATA LOGGING
+
+Implement:
+
+* timestamp for every data entry
+* source tracking (supplier / manual / system)
+* edit history (basic versioning)
+
+This ensures traceability.
+
+---
+
+### 5. 🧠 DATA NORMALIZATION
+
+Standardize inputs:
+
+* Units (kWh, liters, km)
+* Convert all into consistent emission factors
+
+Create centralized emission factor config.
+
+---
+
+### 6. 📥 MULTI-DATA INPUT METHODS
+
+Allow:
+
+* manual input (company side)
+* supplier input (existing)
+* CSV import (extended)
+
+---
+
+### 7. ⚠️ DATA QUALITY FLAGS
+
+Add system to detect:
+
+* missing data
+* abnormal values
+* incomplete suppliers
+
+Show warnings in dashboard.
+
+---
+
+### 8. 📊 ADVANCED ANALYTICS (NON-AI)
+
+Add:
+
+* emission intensity (per supplier)
+* category breakdown (fuel vs electricity)
+* trends over time
+
+---
+
+### 9. 🏢 MULTI-USER ROLES
+
+Add roles:
+
+* Admin (full control)
+* Manager (view + limited edit)
+
+---
+
+### 10. 📦 REPORT VERSIONING
+
+Every report generated should:
+
+* be stored
+* have version number
+* downloadable later
+
+---
+
+## 🎨 UI REQUIREMENTS
+
+* More professional (enterprise feel)
+* Clear compliance sections
+* No clutter — structured layout
+
+---
+
+## 🚨 IMPORTANT RULES
+
+* NO AI features yet
+* NO over-complication
+* Everything must be structured, explainable, and auditable
+
+---
+
+## 🎯 SUCCESS CRITERIA
+
+Phase 3 is successful if:
+
+* Companies can generate compliance-ready reports
+* Data is structured and auditable
+* Dashboard reflects real business insights
+* Product becomes critical for reporting workflows
+
+---
+
+## 🚀 FUTURE PREPARATION
+
+Prepare system for:
+
+* AI insights (Phase 4)
+* Supplier accounts (Phase 5)
+* ERP integrations
+
+---
+
+Build this as a compliance-grade Version 3 system.

@@ -3,6 +3,10 @@ import { auth } from '../firebase'
 const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
 const BASE_URL = API_URL ? `${API_URL}/api` : '/api'
 
+if (import.meta.env.PROD && !API_URL) {
+  console.warn('[API] VITE_API_URL is missing in production; API calls will use relative /api and may fail.')
+}
+
 async function getHeaders() {
   const token = await auth.currentUser?.getIdToken()
   return {

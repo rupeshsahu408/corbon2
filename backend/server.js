@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
-const path = require('path')
 const swaggerUi = require('swagger-ui-express')
 const openapi = require('./openapi.json')
 
@@ -28,7 +27,6 @@ const { recoverExpiredIntegrationCircuits } = require('./services/integrationSyn
 
 const app = express()
 const PORT = process.env.PORT || 3001
-const isProd = process.env.NODE_ENV === 'production'
 
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json())
@@ -53,17 +51,6 @@ app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openapi))
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }))
 app.get('/api/methodology', (_, res) => res.json(getPublicMethodology()))
-
-if (isProd) {
-  const frontendDist = path.join(__dirname, '..', 'frontend', 'dist')
-  app.use(express.static(frontendDist))
-  // Express 5 / path-to-regexp no longer accepts bare "*" route patterns.
-  app.get(/^(?!\/api).*/, (req, res) => {
-    if (!req.path.startsWith('/api')) {
-      res.sendFile(path.join(frontendDist, 'index.html'))
-    }
-  })
-}
 
 app.use((err, req, res, next) => {
   console.error('[Error]', err.message)

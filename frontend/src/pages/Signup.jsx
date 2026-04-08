@@ -57,7 +57,7 @@ export default function Signup() {
         navigate('/supplier-dashboard')
       } else {
         await api.registerCompany({ companyName: form.companyName, email: form.email })
-        navigate('/dashboard')
+        navigate('/onboarding')
       }
     } catch (err) {
       if (err.message.includes('email-already-in-use')) {
@@ -84,7 +84,7 @@ export default function Signup() {
       } catch (regErr) {
         if (!regErr.message.includes('already')) throw regErr
       }
-      navigate(accountType === 'supplier' ? '/supplier-dashboard' : '/dashboard')
+      navigate(accountType === 'supplier' ? '/supplier-dashboard' : '/onboarding')
     } catch (err) {
       if (!err.message.includes('popup-closed-by-user') && !err.message.includes('cancelled-popup-request')) {
         setError('Google sign-up failed. Please try again.')

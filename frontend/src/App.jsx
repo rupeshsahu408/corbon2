@@ -51,6 +51,20 @@ function CompanyGate({ children }) {
   return children
 }
 
+function RoleGate({ allow, fallback, children }) {
+  const { roles } = useAuth()
+  const hasAllowedRole = roles.some((r) => allow.includes(r.role))
+  if (!hasAllowedRole) return <Navigate to={fallback} replace />
+  return children
+}
+
+function getDefaultAuthedPath(roles = []) {
+  const hasSupplierRole = roles.some((r) => r.role === 'supplier')
+  const hasCompanyRole = roles.some((r) => r.role === 'company')
+  if (hasSupplierRole && !hasCompanyRole) return '/supplier-dashboard'
+  return '/dashboard'
+}
+
 function App() {
   const { user, roles, loading, firebaseConfigured, firebaseConfigError } = useAuth()
   const hasSupplierRole = roles.some((r) => r.role === 'supplier')
@@ -93,23 +107,23 @@ function App() {
       }
     >
       <Routes>
-        <Route path="/" element={user ? <Navigate to={hasSupplierRole && !hasCompanyRole ? "/supplier-dashboard" : "/dashboard"} replace /> : <Landing />} />
-        <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
-        <Route path="/signup" element={user ? <Navigate to="/dashboard" replace /> : <Signup />} />
+        <Route path="/" element={user ? <Navigate to={getDefaultAuthedPath(roles)} replace /> : <Landing />} />
+        <Route path="/login" element={user ? <Navigate to={getDefaultAuthedPath(roles)} replace /> : <Login />} />
+        <Route path="/signup" element={user ? <Navigate to={getDefaultAuthedPath(roles)} replace /> : <Signup />} />
         <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
         <Route path="/how-to-use" element={<HowToUse />} />
         <Route path="/supplier/:token" element={<SupplierForm />} />
-        <Route path="/dashboard" element={<ProtectedRoute><CompanyGate><Dashboard /></CompanyGate></ProtectedRoute>} />
-        <Route path="/pro/dashboard" element={<ProtectedRoute><CompanyGate><ProDashboard /></CompanyGate></ProtectedRoute>} />
-        <Route path="/supplier-dashboard" element={<ProtectedRoute><SupplierDashboard /></ProtectedRoute>} />
-        <Route path="/suppliers" element={<ProtectedRoute><CompanyGate><Suppliers /></CompanyGate></ProtectedRoute>} />
-        <Route path="/pro/suppliers" element={<ProtectedRoute><CompanyGate><ProSuppliers /></CompanyGate></ProtectedRoute>} />
-        <Route path="/data-entry" element={<ProtectedRoute><CompanyGate><DataEntry /></CompanyGate></ProtectedRoute>} />
-        <Route path="/reports" element={<ProtectedRoute><CompanyGate><Reports /></CompanyGate></ProtectedRoute>} />
-        <Route path="/insights" element={<ProtectedRoute><CompanyGate><Insights /></CompanyGate></ProtectedRoute>} />
-        <Route path="/financial-impact" element={<ProtectedRoute><CompanyGate><FinancialImpact /></CompanyGate></ProtectedRoute>} />
-        <Route path="/enterprise" element={<ProtectedRoute><CompanyGate><EnterpriseHub /></CompanyGate></ProtectedRoute>} />
-        <Route path="/supplier-marketplace" element={<ProtectedRoute><CompanyGate><SupplierMarketplace /></CompanyGate></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><Dashboard /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/pro/dashboard" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><ProDashboard /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/supplier-dashboard" element={<ProtectedRoute><RoleGate allow={['supplier']} fallback="/dashboard"><SupplierDashboard /></RoleGate></ProtectedRoute>} />
+        <Route path="/suppliers" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><Suppliers /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/pro/suppliers" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><ProSuppliers /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/data-entry" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><DataEntry /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/reports" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><Reports /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/insights" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><Insights /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/financial-impact" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><FinancialImpact /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/enterprise" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><EnterpriseHub /></CompanyGate></RoleGate></ProtectedRoute>} />
+        <Route path="/supplier-marketplace" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><SupplierMarketplace /></CompanyGate></RoleGate></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>

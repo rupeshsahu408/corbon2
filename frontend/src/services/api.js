@@ -1,6 +1,7 @@
 import { auth } from '../firebase'
 
-const BASE_URL = '/api'
+const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+const BASE_URL = API_URL ? `${API_URL}/api` : '/api'
 
 async function getHeaders() {
   const token = await auth.currentUser?.getIdToken()

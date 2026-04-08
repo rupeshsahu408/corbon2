@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import { api } from '../services/api'
 
 /* ─── Nav data ─── */
 const companyNavItems = [
@@ -180,6 +181,8 @@ export default function Sidebar() {
   const navigate = useNavigate()
   const hasCompanyRole = roles?.some((r) => r.role === 'company')
   const hasSupplierRole = roles?.some((r) => r.role === 'supplier')
+  const [creatingSupplierRole, setCreatingSupplierRole] = useState(false)
+  const [roleError, setRoleError] = useState('')
   const navItems = hasCompanyRole ? companyNavItems : supplierNavItems
 
   /* Persist collapsed state */
@@ -194,6 +197,20 @@ export default function Sidebar() {
   async function handleLogout() {
     await logout()
     navigate('/')
+  }
+
+  async function handleBecomeSupplier() {
+    setRoleError('')
+    setCreatingSupplierRole(true)
+    try {
+      await api.registerSupplier()
+      navigate('/supplier-dashboard')
+      window.location.reload()
+    } catch (err) {
+      setRoleError(err.message || 'Failed to enable supplier role')
+    } finally {
+      setCreatingSupplierRole(false)
+    }
   }
 
   const groups = navItems.reduce((acc, item) => {
@@ -399,6 +416,32 @@ export default function Sidebar() {
                     </NavLink>
                   ))}
                 </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence initial={false}>
+          {!collapsed && hasCompanyRole && !hasSupplierRole && (
+            <motion.div
+              key="enable-supplier-role"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.18 }}
+              className="mb-3 overflow-hidden"
+            >
+              <div className="p-2 rounded-xl border border-white/6" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                <p className="text-[10px] uppercase tracking-wider text-slate-600 mb-2 px-1">Role</p>
+                <button
+                  type="button"
+                  onClick={handleBecomeSupplier}
+                  disabled={creatingSupplierRole}
+                  className="w-full text-xs text-center px-2 py-2 rounded-lg transition-all duration-200 font-medium bg-slate-900 text-slate-200 border border-slate-700 hover:border-emerald-500/40 hover:text-emerald-300 disabled:opacity-60"
+                >
+                  {creatingSupplierRole ? 'Enabling Supplier...' : 'Add Supplier Role'}
+                </button>
+                {roleError && <p className="text-[10px] text-rose-300 mt-2 px-1">{roleError}</p>}
               </div>
             </motion.div>
           )}

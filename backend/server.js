@@ -41,11 +41,18 @@ const allowedOrigins = [
   'http://127.0.0.1:5173',
 ].filter(Boolean)
 
+function isAllowedOrigin(origin) {
+  if (!origin) return true
+  if (allowedOrigins.includes(origin)) return true
+  // Allow Vercel preview/prod domains for this project family.
+  if (/^https:\/\/corbon2(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin)) return true
+  return false
+}
+
 app.use(cors({
   origin(origin, callback) {
     // Allow non-browser/server-to-server requests (no Origin header).
-    if (!origin) return callback(null, true)
-    if (allowedOrigins.includes(origin)) return callback(null, true)
+    if (isAllowedOrigin(origin)) return callback(null, true)
     return callback(new Error(`CORS blocked for origin: ${origin}`))
   },
   credentials: true,

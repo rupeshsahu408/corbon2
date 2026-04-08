@@ -16,17 +16,33 @@ async function getHeaders() {
 }
 
 async function request(method, path, body) {
-  const headers = await getHeaders()
-  const res = await fetch(`${BASE_URL}${path}`, {
-    method,
-    headers,
-    ...(body ? { body: JSON.stringify(body) } : {}),
-  })
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ message: 'Request failed' }))
-    throw new Error(err.message || 'Request failed')
+  try {
+    const headers = await getHeaders()
+    const res = await fetch(`${BASE_URL}${path}`, {
+      method,
+      headers,
+      ...(body ? { body: JSON.stringify(body) } : {}),
+    })
+    if (!res.ok) {
+      const text = await res.text()
+      let message = 'Request failed'
+      if (text) {
+        try {
+          const parsed = JSON.parse(text)
+          message = parsed.message || message
+        } catch {
+          message = text
+        }
+      }
+      throw new Error(message)
+    }
+    return res.json()
+  } catch (err) {
+    if (err instanceof TypeError) {
+      throw new Error('Network error: could not reach API. Check VITE_API_URL and backend CORS.')
+    }
+    throw err
   }
-  return res.json()
 }
 
 async function requestFormData(method, path, formData) {

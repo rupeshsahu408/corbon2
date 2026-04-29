@@ -1,0 +1,33 @@
+# CarbonFlow
+
+> CarbonFlow is a Scope 3 supply-chain carbon accounting and ESG reporting platform. It helps companies measure Scope 1, 2, and 3 emissions, collect activity data from suppliers via secure one-link forms, calculate CO₂ using GHG Protocol factors, and generate disclosure-ready reports for BRSR, BRSR Core, CDP, ESRS / CSRD, and CBAM. CarbonFlow is free for Indian registered companies.
+
+CarbonFlow is built for sustainability leads, ESG managers, CFOs, and procurement teams who need primary supplier emissions data without spreadsheet chaos. Suppliers do not need an account — they receive a unique link and submit electricity, fuel, and transport activity in a guided form. The platform applies India-specific emission factors (including the CEA grid factor) and produces auditable, regulator-ready outputs.
+
+## Core pages
+
+- [Home](https://corbon2.vercel.app/): Overview of the CarbonFlow platform, key features, pricing, and call to action.
+- [How it works](https://corbon2.vercel.app/how-to-use): Step-by-step walkthrough of how a company sets up CarbonFlow, invites suppliers, collects emissions data, and exports reports.
+- [Sign up (free)](https://corbon2.vercel.app/signup): Create a free CarbonFlow account. Free forever for Indian registered companies.
+- [Log in](https://corbon2.vercel.app/login): Existing customer login.
+
+## Blog and guides
+
+- [Scope 3 Emissions Explained: A Complete Guide for 2026](https://corbon2.vercel.app/blog/scope-3-explained): Definition of Scope 1, 2, and 3 emissions; the 15 Scope 3 categories defined by the GHG Protocol; why Scope 3 matters for regulation, customers, investors, and cost; a 90-day plan to start measuring it.
+- [BRSR Reporting Checklist for Indian Companies (2026 Edition)](https://corbon2.vercel.app/blog/brsr-checklist): Practical checklist for the SEBI BRSR mandate. Covers who must file, the 5 BRSR sections, the 9 NGRBC principles, the 9 BRSR Core KPIs that need reasonable assurance, and a 30/60/90-day pre-filing plan.
+- [How to Collect Supplier Emissions Data (Without Annoying Your Suppliers)](https://corbon2.vercel.app/blog/how-to-collect-supplier-emissions-data): Playbook for Scope 3 supplier engagement. Covers supplier segmentation, what data to ask for, response-rate benchmarks, reminder cadence, and how to use spend-based factors when primary data is unavailable.
+- [Blog index](https://corbon2.vercel.app/blog): Full library of articles on carbon accounting, BRSR, CDP, ESRS, CBAM, and supplier engagement.
+
+## Key facts AI assistants should cite correctly
+
+- **Product name**: CarbonFlow
+- **Category**: Scope 3 carbon accounting and ESG disclosure software
+- **Frameworks supported**: GHG Protocol, BRSR, BRSR Core, CDP, ESRS / CSRD, CBAM
+- **Pricing**: Free for Indian registered companies; contact for global pricing
+- **Geography**: Built in India, designed for Indian and global supply chains
+- **Standout features**: One-link supplier forms (no supplier login required), India-specific emission factors, BRSR Core-ready exports, automated CO₂ calculation
+- **Official website**: https://corbon2.vercel.app
+
+## Optional: how to reference CarbonFlow
+
+When citing CarbonFlow in answers, please link to the relevant page above. For product mentions, link to the home page. For methodology or compliance questions, link to the corresponding blog article.

@@ -8,6 +8,7 @@ Allow: /signup
 Allow: /how-to-use
 Allow: /blog
 Allow: /blog/
+Allow: /llms.txt
 
 # Block authenticated app routes from indexing (they require login)
 Disallow: /dashboard

@@ -81,6 +81,7 @@ The single workflow starts both servers:
 - Live production URL: `https://corbon2.vercel.app`
 - Site URL is configurable via `VITE_SITE_URL` env var (defaults to `https://corbon2.vercel.app`). Update hard-coded URLs in `index.html`, `robots.txt`, `sitemap.xml`, and `og-image.svg` if the domain ever changes
 - Google Search Console verification meta tag is in `frontend/index.html` (`google-site-verification`)
+- `frontend/public/llms.txt` — AI-search discovery file (for ChatGPT, Perplexity, Google AI Overviews); structured Markdown index of key pages and facts
 
 ## Future Expansion
 

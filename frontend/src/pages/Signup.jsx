@@ -8,9 +8,9 @@ export default function Signup() {
   useSEO({
     title: 'Sign Up — Free Carbon Accounting for Indian Companies',
     description:
-      'Create a free CarbonFlow account to start tracking Scope 3 supply chain emissions, collecting supplier data, and generating BRSR / CDP / ESRS reports. Free forever for Indian businesses.',
+      'Create a free CarbonFlow account in 2 minutes. Start tracking Scope 1, 2, and 3 emissions, collect supplier carbon data, calculate CO₂ with GHG Protocol factors, and generate BRSR, CDP, ESRS, and CBAM-ready reports. 100% free for Indian registered companies.',
     keywords:
-      'sign up, free carbon accounting, BRSR free, scope 3 software, Indian companies sustainability, ESG signup',
+      'free carbon accounting software, free BRSR software, free ESG software India, sign up carbon platform, scope 3 software signup, BRSR free tool, free GHG calculator India, sustainability software free trial, CDP free software, ESRS free, supplier emissions free tool, MSME carbon accounting free, startup ESG software, BRSR for unlisted companies, carbon footprint calculator India',
     path: '/signup',
   })
   const { signup, loginWithGoogle } = useAuth()

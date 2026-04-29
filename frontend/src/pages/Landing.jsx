@@ -277,9 +277,9 @@ export default function Landing() {
   useSEO({
     title: 'Scope 3 Carbon Accounting & BRSR Reporting Platform',
     description:
-      'CarbonFlow helps companies measure Scope 3 supply chain emissions, collect supplier carbon data, and generate BRSR, CDP, and ESRS-ready reports. Free for Indian companies.',
+      'CarbonFlow is the all-in-one carbon accounting and ESG software for Scope 3 supply chain emissions. Collect supplier data, calculate Scope 1, 2 & 3 CO₂ using GHG Protocol factors, and export BRSR, BRSR Core, CDP, ESRS, and CBAM-ready reports. Free for Indian companies.',
     keywords:
-      'scope 3 emissions, carbon accounting, BRSR reporting, supply chain emissions, ESG software, supplier emissions tracking, CDP, ESRS, CBAM, GHG protocol, sustainability reporting India',
+      'carbon accounting software, scope 3 emissions, scope 3 reporting, scope 1 2 3 software, supply chain carbon footprint, BRSR reporting, BRSR Core, BRSR India, SEBI BRSR, NGRBC principles, CDP disclosure, CDP supply chain, ESRS, CSRD reporting, CBAM India, supplier emissions tracking, supplier carbon data collection, ESG software India, ESG reporting platform, sustainability reporting India, GHG Protocol, greenhouse gas inventory, CO2 calculator, emission factors India, CEA grid factor, net zero software, decarbonisation platform, science based targets, SBTi tool, free carbon accounting India, carbon software for SMEs, BRSR consultant alternative, primary data collection, value chain emissions',
     path: '/',
     jsonLd: {
       '@context': 'https://schema.org',

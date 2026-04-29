@@ -5,7 +5,7 @@ export const blogPosts = [
     description:
       'Scope 3 emissions cover everything that happens upstream and downstream of your business. Learn the 15 categories, why they matter, and how to start measuring them.',
     keywords:
-      'scope 3 emissions, scope 3 categories, GHG protocol, supply chain emissions, indirect emissions, value chain emissions, carbon accounting guide',
+      'scope 3 emissions, scope 3 explained, scope 3 categories, scope 3 GHG protocol, 15 scope 3 categories, value chain emissions, supply chain emissions, indirect emissions, scope 1 2 3 difference, scope 3 examples, scope 3 calculation, scope 3 reporting requirements, scope 3 SBTi, upstream emissions, downstream emissions, scope 3 BRSR, scope 3 CDP, carbon accounting guide, GHG inventory beginner',
     author: 'CarbonFlow Team',
     date: '2026-04-12',
     readMinutes: 9,
@@ -116,7 +116,7 @@ export const blogPosts = [
     description:
       'A practical, section-by-section BRSR checklist for Indian listed and unlisted companies — covering all 9 NGRBC principles, BRSR Core KPIs, and assurance requirements.',
     keywords:
-      'BRSR checklist, BRSR Core, BRSR reporting India, NGRBC principles, SEBI BRSR, ESG reporting India, BRSR format 2026',
+      'BRSR checklist, BRSR Core checklist, BRSR Core KPIs, BRSR reporting India, BRSR filing guide, BRSR format 2026, BRSR XBRL, SEBI BRSR, NGRBC principles, BRSR principle 6 environment, BRSR assurance, reasonable assurance BRSR, BRSR top 1000 companies, BRSR top 250, BRSR value chain disclosure, ESG reporting India, BRSR for unlisted companies, BRSR consultant India, BRSR template, BRSR scope 3, India ESG compliance',
     author: 'CarbonFlow Team',
     date: '2026-04-19',
     readMinutes: 11,
@@ -237,7 +237,7 @@ export const blogPosts = [
     description:
       'A pragmatic playbook for collecting Scope 3 supplier emissions data — what to ask, how to ask, response-rate benchmarks, and templates that actually work.',
     keywords:
-      'supplier emissions data, scope 3 data collection, supplier survey template, supplier engagement, primary data carbon, supplier carbon questionnaire',
+      'supplier emissions data collection, scope 3 data collection, supplier carbon survey template, supplier engagement, supplier sustainability questionnaire, primary data carbon, supplier carbon footprint, supplier ESG survey, supplier emissions response rate, scope 3 category 1 data, supplier engagement program, procurement carbon data, vendor sustainability scorecard, supplier carbon CDP, supplier data CBAM, supplier audit emissions, hybrid scope 3 methodology, spend based emission factors',
     author: 'CarbonFlow Team',
     date: '2026-04-25',
     readMinutes: 8,

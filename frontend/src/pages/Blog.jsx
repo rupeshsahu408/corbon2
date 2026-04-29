@@ -13,9 +13,9 @@ export default function Blog() {
   useSEO({
     title: 'Blog — Carbon Accounting, BRSR & Scope 3 Insights',
     description:
-      'In-depth guides on Scope 3 emissions, BRSR reporting, supplier engagement, and ESG disclosure for sustainability leaders. Practical playbooks from the CarbonFlow team.',
+      'In-depth guides on Scope 3 emissions, BRSR reporting, BRSR Core, CDP, ESRS, CBAM, supplier engagement, and ESG disclosure — written for sustainability leaders, ESG managers, CFOs, and procurement teams in India and globally.',
     keywords:
-      'carbon accounting blog, BRSR articles, scope 3 guide, ESG reporting blog, supplier emissions, sustainability insights India',
+      'carbon accounting blog, BRSR blog, BRSR articles, BRSR guide India, scope 3 guide, scope 3 explained, scope 1 2 3 guide, GHG Protocol blog, CDP guide, ESRS guide, CSRD guide, CBAM guide, ESG reporting blog India, sustainability insights India, supplier emissions guide, supplier engagement, net zero strategy, decarbonisation playbook, SBTi guide, climate disclosure India, BRSR checklist, BRSR Core KPIs, value chain emissions, NGRBC principles, sustainability for SMEs',
     path: '/blog',
     jsonLd: {
       '@context': 'https://schema.org',

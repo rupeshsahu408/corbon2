@@ -470,9 +470,9 @@ export default function HowToUse() {
   useSEO({
     title: 'How CarbonFlow Works — Scope 3 Carbon Accounting Guide',
     description:
-      'Learn how CarbonFlow makes Scope 3 carbon accounting simple: invite suppliers, collect emissions data, calculate CO₂, and export BRSR / CDP / ESRS-ready reports in minutes.',
+      'Step-by-step guide to using CarbonFlow: invite suppliers, collect Scope 3 emissions data, calculate CO₂ with GHG Protocol factors, and export BRSR, BRSR Core, CDP, ESRS, and CBAM disclosure reports in minutes.',
     keywords:
-      'how to use carbon accounting software, scope 3 guide, BRSR reporting steps, supplier emissions data collection, carbon footprint calculator, ESG reporting tutorial',
+      'how to do carbon accounting, how to measure scope 3 emissions, how to calculate scope 3, how to do BRSR reporting, BRSR step by step, BRSR filing guide, supplier emissions data collection guide, supplier survey template, carbon footprint calculation tutorial, GHG Protocol guide, scope 1 2 3 calculation, how to build a GHG inventory, ESG reporting tutorial India, CDP disclosure guide, ESRS step by step, CBAM how to file, CO2 calculation methodology, emission factor lookup India, supplier engagement playbook, value chain mapping, BRSR Core assurance preparation',
     path: '/how-to-use',
     jsonLd: {
       '@context': 'https://schema.org',

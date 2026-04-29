@@ -7,7 +7,9 @@ export default function Login() {
   useSEO({
     title: 'Log In',
     description:
-      'Log in to CarbonFlow to manage your Scope 3 supply chain emissions, suppliers, and BRSR / CDP / ESRS sustainability reports.',
+      'Log in to your CarbonFlow account to manage Scope 3 supply chain emissions, suppliers, GHG inventory, and BRSR, CDP, ESRS, and CBAM sustainability reports.',
+    keywords:
+      'CarbonFlow login, carbon accounting login, BRSR software login, ESG dashboard login, scope 3 software sign in, sustainability platform India login',
     path: '/login',
   })
   const { login, loginWithGoogle } = useAuth()

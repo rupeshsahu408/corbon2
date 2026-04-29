@@ -78,7 +78,9 @@ The single workflow starts both servers:
 - `frontend/src/pages/Blog.jsx` — `/blog` index page
 - `frontend/src/pages/BlogPost.jsx` — `/blog/:slug` article page (renders BlogPosting JSON-LD)
 - Footer links to Blog added on Landing and HowToUse pages
-- Site URL is configurable via `VITE_SITE_URL` env var (defaults to `https://carbonflow.app`). Replace the hard-coded URLs in `index.html`, `robots.txt`, and `sitemap.xml` with the real production domain when published
+- Live production URL: `https://corbon2.vercel.app`
+- Site URL is configurable via `VITE_SITE_URL` env var (defaults to `https://corbon2.vercel.app`). Update hard-coded URLs in `index.html`, `robots.txt`, `sitemap.xml`, and `og-image.svg` if the domain ever changes
+- Google Search Console verification meta tag is in `frontend/index.html` (`google-site-verification`)
 
 ## Future Expansion
 

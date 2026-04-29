@@ -613,7 +613,7 @@ export default function HowToUse() {
                         <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
                         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
                         <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-                        <span className="ml-2 text-slate-600 text-[10px]">carbonflow.app · {f.title}</span>
+                        <span className="ml-2 text-slate-600 text-[10px]">corbon2.vercel.app · {f.title}</span>
                       </div>
                       <div className="h-[calc(100%-36px)] overflow-hidden">
                         <FeatureIllustration type={f.id} />

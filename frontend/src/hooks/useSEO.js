@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://carbonflow.app').replace(/\/$/, '')
+const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://corbon2.vercel.app').replace(/\/$/, '')
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.svg`
 
 function setMeta(attr, name, content) {

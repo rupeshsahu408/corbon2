@@ -661,7 +661,7 @@ export default function Landing() {
                 <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
                 <div className="w-3 h-3 rounded-full bg-green-500/60" />
                 <div className="flex-1 mx-4 h-6 rounded-md bg-white/5 flex items-center px-3">
-                  <span className="text-slate-500 text-xs">carbonflow.app/dashboard</span>
+                  <span className="text-slate-500 text-xs">corbon2.vercel.app/dashboard</span>
                 </div>
               </div>
               <div className="p-6">

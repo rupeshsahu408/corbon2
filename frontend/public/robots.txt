@@ -29,4 +29,4 @@ Disallow: /supplier/
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://carbonflow.app/sitemap.xml
+Sitemap: https://corbon2.vercel.app/sitemap.xml

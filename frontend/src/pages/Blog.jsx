@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import useSEO from '../hooks/useSEO'
 import { blogPosts } from '../data/blogPosts'
 
-const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://carbonflow.app').replace(/\/$/, '')
+const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://corbon2.vercel.app').replace(/\/$/, '')
 
 function formatDate(d) {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })

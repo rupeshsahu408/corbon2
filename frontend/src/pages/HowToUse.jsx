@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import useSEO from '../hooks/useSEO'
 
 /* ─── Reusable fade-in wrapper ─── */
 function FadeIn({ children, delay = 0, className = '' }) {
@@ -466,6 +467,27 @@ const steps = [
 ]
 
 export default function HowToUse() {
+  useSEO({
+    title: 'How CarbonFlow Works — Scope 3 Carbon Accounting Guide',
+    description:
+      'Learn how CarbonFlow makes Scope 3 carbon accounting simple: invite suppliers, collect emissions data, calculate CO₂, and export BRSR / CDP / ESRS-ready reports in minutes.',
+    keywords:
+      'how to use carbon accounting software, scope 3 guide, BRSR reporting steps, supplier emissions data collection, carbon footprint calculator, ESG reporting tutorial',
+    path: '/how-to-use',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'How to track Scope 3 supply chain emissions with CarbonFlow',
+      description:
+        'A step-by-step guide to measuring and reporting Scope 3 supply chain carbon emissions using CarbonFlow.',
+      step: [
+        { '@type': 'HowToStep', position: 1, name: 'Sign up', text: 'Create a free CarbonFlow account for your company.' },
+        { '@type': 'HowToStep', position: 2, name: 'Invite suppliers', text: 'Send each supplier a unique secure submission link — no login required for them.' },
+        { '@type': 'HowToStep', position: 3, name: 'Collect emissions data', text: 'Suppliers submit electricity, fuel, and transport activity through a guided form.' },
+        { '@type': 'HowToStep', position: 4, name: 'Generate reports', text: 'Download BRSR, CDP, ESRS, or PDF emissions reports with full supplier breakdown.' },
+      ],
+    },
+  })
   return (
     <div className="min-h-screen bg-[#030712] text-white overflow-x-hidden">
       {/* ── NAV ── */}

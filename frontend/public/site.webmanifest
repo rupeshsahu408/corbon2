@@ -1,0 +1,20 @@
+{
+  "name": "CarbonFlow — Scope 3 Carbon Accounting",
+  "short_name": "CarbonFlow",
+  "description": "Scope 3 supply chain carbon accounting and BRSR reporting platform.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "sustainability"],
+  "lang": "en"
+}

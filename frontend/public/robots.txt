@@ -1,0 +1,30 @@
+    # CarbonFlow — robots.txt
+# Allow major search engines to crawl public pages.
+
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /signup
+Allow: /how-to-use
+
+# Block authenticated app routes from indexing (they require login)
+Disallow: /dashboard
+Disallow: /pro/
+Disallow: /supplier-dashboard
+Disallow: /suppliers
+Disallow: /data-entry
+Disallow: /reports
+Disallow: /insights
+Disallow: /financial-impact
+Disallow: /enterprise
+Disallow: /supplier-marketplace
+Disallow: /onboarding
+
+# Block per-supplier submission links (token URLs are private)
+Disallow: /supplier/
+
+# Block API
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://carbonflow.app/sitemap.xml

@@ -66,6 +66,16 @@ The single workflow starts both servers:
 - **Company**: Signs up, manages suppliers, views dashboard, downloads reports
 - **Supplier**: Receives a unique link, submits data via form (no login required)
 
+## SEO
+
+- `frontend/index.html` — full meta tags, Open Graph, Twitter Card, JSON-LD (Organization, WebSite, SoftwareApplication), `<noscript>` SEO fallback
+- `frontend/public/robots.txt` — allows public routes, blocks `/dashboard`, `/api`, `/supplier/<token>`, etc.
+- `frontend/public/sitemap.xml` — public routes only (`/`, `/how-to-use`, `/signup`, `/login`)
+- `frontend/public/site.webmanifest` — PWA manifest
+- `frontend/public/og-image.svg` — 1200x630 social share image
+- `frontend/src/hooks/useSEO.js` — per-page hook for title, description, canonical, OG/Twitter, JSON-LD. Called from Landing, Login, Signup, HowToUse
+- Site URL is configurable via `VITE_SITE_URL` env var (defaults to `https://carbonflow.app`). Replace the hard-coded URLs in `index.html`, `robots.txt`, and `sitemap.xml` with the real production domain when published
+
 ## Future Expansion
 
 Planned: BRSR/CBAM compliance, AI insights, supplier accounts, third-party integrations

@@ -1,8 +1,15 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import useSEO from '../hooks/useSEO'
 
 export default function Login() {
+  useSEO({
+    title: 'Log In',
+    description:
+      'Log in to CarbonFlow to manage your Scope 3 supply chain emissions, suppliers, and BRSR / CDP / ESRS sustainability reports.',
+    path: '/login',
+  })
   const { login, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
   const [form, setForm] = useState({ email: '', password: '' })

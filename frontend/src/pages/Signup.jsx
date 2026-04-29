@@ -2,8 +2,17 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { api } from '../services/api'
+import useSEO from '../hooks/useSEO'
 
 export default function Signup() {
+  useSEO({
+    title: 'Sign Up — Free Carbon Accounting for Indian Companies',
+    description:
+      'Create a free CarbonFlow account to start tracking Scope 3 supply chain emissions, collecting supplier data, and generating BRSR / CDP / ESRS reports. Free forever for Indian businesses.',
+    keywords:
+      'sign up, free carbon accounting, BRSR free, scope 3 software, Indian companies sustainability, ESG signup',
+    path: '/signup',
+  })
   const { signup, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()

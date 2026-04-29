@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion'
+import useSEO from '../hooks/useSEO'
 
 /* ─── Particle Globe Canvas ─── */
 function GlobeCanvas() {
@@ -273,6 +274,33 @@ const testimonials = [
 
 /* ─── Main Component ─── */
 export default function Landing() {
+  useSEO({
+    title: 'Scope 3 Carbon Accounting & BRSR Reporting Platform',
+    description:
+      'CarbonFlow helps companies measure Scope 3 supply chain emissions, collect supplier carbon data, and generate BRSR, CDP, and ESRS-ready reports. Free for Indian companies.',
+    keywords:
+      'scope 3 emissions, carbon accounting, BRSR reporting, supply chain emissions, ESG software, supplier emissions tracking, CDP, ESRS, CBAM, GHG protocol, sustainability reporting India',
+    path: '/',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'CarbonFlow — Scope 3 Carbon Accounting',
+      description:
+        'Measure, manage, and report Scope 3 supply chain emissions with CarbonFlow. Free for Indian businesses.',
+      mainEntity: {
+        '@type': 'SoftwareApplication',
+        name: 'CarbonFlow',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'INR',
+        },
+      },
+    },
+  })
+
   const { scrollY } = useScroll()
   const heroY = useTransform(scrollY, [0, 600], [0, -80])
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0.3])

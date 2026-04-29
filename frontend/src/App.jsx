@@ -21,6 +21,8 @@ const EnterpriseHub = lazy(() => import('./pages/EnterpriseHub'))
 const SupplierMarketplace = lazy(() => import('./pages/SupplierMarketplace'))
 const FinancialImpact = lazy(() => import('./pages/FinancialImpact'))
 const HowToUse = lazy(() => import('./pages/HowToUse'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BlogPost = lazy(() => import('./pages/BlogPost'))
 
 function CompanyGate({ children }) {
   const [status, setStatus] = useState('loading') // loading | ok | needs | error
@@ -119,6 +121,8 @@ function App() {
         <Route path="/signup" element={user ? <Navigate to={getDefaultAuthedPath(roles)} replace /> : <Signup />} />
         <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
         <Route path="/how-to-use" element={<HowToUse />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/supplier/:token" element={<SupplierForm />} />
         <Route path="/dashboard" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><Dashboard /></CompanyGate></RoleGate></ProtectedRoute>} />
         <Route path="/pro/dashboard" element={<ProtectedRoute><RoleGate allow={['company']} fallback="/supplier-dashboard"><CompanyGate><ProDashboard /></CompanyGate></RoleGate></ProtectedRoute>} />

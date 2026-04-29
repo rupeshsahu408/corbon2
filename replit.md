@@ -73,7 +73,11 @@ The single workflow starts both servers:
 - `frontend/public/sitemap.xml` — public routes only (`/`, `/how-to-use`, `/signup`, `/login`)
 - `frontend/public/site.webmanifest` — PWA manifest
 - `frontend/public/og-image.svg` — 1200x630 social share image
-- `frontend/src/hooks/useSEO.js` — per-page hook for title, description, canonical, OG/Twitter, JSON-LD. Called from Landing, Login, Signup, HowToUse
+- `frontend/src/hooks/useSEO.js` — per-page hook for title, description, canonical, OG/Twitter, JSON-LD. Called from Landing, Login, Signup, HowToUse, Blog, BlogPost
+- `frontend/src/data/blogPosts.js` — blog post content data; add new posts here
+- `frontend/src/pages/Blog.jsx` — `/blog` index page
+- `frontend/src/pages/BlogPost.jsx` — `/blog/:slug` article page (renders BlogPosting JSON-LD)
+- Footer links to Blog added on Landing and HowToUse pages
 - Site URL is configurable via `VITE_SITE_URL` env var (defaults to `https://carbonflow.app`). Replace the hard-coded URLs in `index.html`, `robots.txt`, and `sitemap.xml` with the real production domain when published
 
 ## Future Expansion

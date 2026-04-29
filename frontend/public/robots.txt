@@ -1,4 +1,4 @@
-    # CarbonFlow — robots.txt
+# CarbonFlow — robots.txt
 # Allow major search engines to crawl public pages.
 
 User-agent: *
@@ -6,6 +6,8 @@ Allow: /
 Allow: /login
 Allow: /signup
 Allow: /how-to-use
+Allow: /blog
+Allow: /blog/
 
 # Block authenticated app routes from indexing (they require login)
 Disallow: /dashboard

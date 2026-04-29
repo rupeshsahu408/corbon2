@@ -11,6 +11,29 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://carbonflow.app/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://carbonflow.app/blog/scope-3-explained</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://carbonflow.app/blog/brsr-checklist</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://carbonflow.app/blog/how-to-collect-supplier-emissions-data</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://carbonflow.app/signup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

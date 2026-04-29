@@ -820,14 +820,13 @@ export default function Landing() {
             <span className="font-black text-white">CarbonFlow</span>
             <span className="text-slate-500 text-sm">· 🇮🇳 Proudly Made in India</span>
           </div>
-          <div className="flex items-center gap-6 text-sm text-slate-500">
-            <span>BRSR Compliant</span>
-            <span>·</span>
-            <span>CDP Certified</span>
-            <span>·</span>
-            <span>GHG Protocol</span>
+          <div className="flex items-center gap-5 text-sm text-slate-400">
+            <Link to="/how-to-use" className="hover:text-white transition">How it works</Link>
+            <Link to="/blog" className="hover:text-white transition">Blog</Link>
+            <Link to="/signup" className="hover:text-white transition">Sign up</Link>
+            <Link to="/login" className="hover:text-white transition">Log in</Link>
           </div>
-          <p className="text-slate-600 text-sm">© {new Date().getFullYear()} CarbonFlow</p>
+          <p className="text-slate-600 text-sm">© {new Date().getFullYear()} CarbonFlow · BRSR · CDP · GHG Protocol</p>
         </div>
       </footer>
     </div>
